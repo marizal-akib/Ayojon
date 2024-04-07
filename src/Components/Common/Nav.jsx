@@ -1,6 +1,32 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const Nav = () => {
+  const { user , logOut} = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+  const nav = (
+    <>
+      <li>
+        <Link to={"/"} >Home</Link>
+      </li>
+      
+      <li>
+        <Link to={"/services"}>Services</Link>
+      </li>
+      {
+        user && <li>
+        <Link to="/dashboard/home">Dashboard</Link>
+      </li>
+      }
+    </>
+  );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -21,54 +47,47 @@ const Nav = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu text-[#343a40] menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {nav}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to={"/"}>
+          <img src="/logo.jpg-removebg-preview.png" className="w-1/5" alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          {nav}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+      {user ? (
+            <>
+              <span>{user?.displayName}</span>
+              <button
+                onClick={handleLogout}
+                className="btn btn-outline mx-3 ml-3 border-b-4 border-orange-400 bg-slate-100"
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+            <Link
+              className="btn btn-outline  border-b-4 border-orange-400 bg-slate-100"
+              to="/login"
+            >
+              Login
+            </Link>
+            <Link
+              className="btn btn-outline mx-3 border-b-4 border-orange-400 bg-slate-100"
+              to="/signUp"
+            >
+              Sign up
+            </Link>
+            </>
+          )}
       </div>
     </div>
   );
