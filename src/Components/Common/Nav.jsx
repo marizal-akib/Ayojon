@@ -20,7 +20,7 @@ const Nav = () => {
       </li>
       {
         user && <li>
-        <Link to="/dashboard/home">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       }
     </>
