@@ -44,23 +44,20 @@ const AllServices = () => {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto lg:pt-0 md:pt-2 pt-36">
       {loading ? (
         <>
           <h2 className="p-4 text-xl font-semibold">{count} Services</h2>
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mx-4">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-4">
             {services.map((service) => (
               <div key={service._id} className="card  bg-base-100 shadow-xl">
                 <div className="card-body">
                   <h2 className="card-title">
                     {service.service_name}
-                    <Link to={`/business/${service._id}`} className="flex">
+                    <Link to={`/business/${service._id}`} className="flex px-2">
                       <div className="avatar">
-                        <div className="w-8 rounded">
-                          <img
-                            src={service.logo_link}
-                            alt="Business Logo"
-                          />
+                        <div className="w-8 rounded-full">
+                          <img src={service.logo_link} alt="Business Logo" />
                         </div>
                       </div>
                       <div className="badge border-none font-bold text-orange-900 text-xs">
@@ -85,7 +82,7 @@ const AllServices = () => {
               </div>
             ))}
           </div>
-          <div className="text-center m-10">
+          <div className="text-center pb-4 mt-5">
             <button
               className="btn  bg-slate-400 rounded-r-none"
               onClick={handlePrev}
@@ -114,8 +111,8 @@ const AllServices = () => {
           </div>
         </>
       ) : (
-        <div className=" p-80 ml-64 ">
-          <span className=" loading loading-infinity loading-lg"></span>
+        <div className="flex items-center justify-center h-screen">
+          <div className="loading loading-infinity loading-lg"></div>
         </div>
       )}
     </div>

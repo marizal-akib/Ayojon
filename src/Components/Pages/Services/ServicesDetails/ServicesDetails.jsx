@@ -1,12 +1,10 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import useBusiness from "../../../hooks/useBusiness";
+
 
 
 const ServicesDetails = () => {
   const allServices = useLoaderData();
   const { id } = useParams();
-  const [businesses] = useBusiness();
-  console.log(businesses);
 
   const service = allServices.find((services) => services._id == id);
 
