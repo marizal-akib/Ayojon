@@ -6,6 +6,7 @@ import Login from "../Components/Pages/Authintication/Login";
 import SingUp from "../Components/Pages/Authintication/SingUp";
 import Business from "../Components/Pages/Business/Business";
 import ServicesDetails from "../Components/Pages/Services/ServicesDetails/ServicesDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: <ServicesDetails></ServicesDetails>,
+        element: (
+          <PrivateRoutes>
+            <ServicesDetails></ServicesDetails>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) => fetch("http://localhost:5000/services"),
       },
     ],

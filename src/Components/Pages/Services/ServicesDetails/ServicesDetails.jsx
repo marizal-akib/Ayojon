@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
-
-
+import Title from "./ServicesComponents/Title";
+import ServicesBanner from "./ServicesComponents/ServicesBanner";
+import Services_Detail from "./ServicesComponents/Services_Detail";
 
 const ServicesDetails = () => {
   const allServices = useLoaderData();
@@ -8,20 +9,15 @@ const ServicesDetails = () => {
 
   const service = allServices.find((services) => services._id == id);
 
-  const {
-    business_email,
-    business_name,
-    logo_link,
-    pic_link_1,
-    pic_link_2,
-    pic_link_3,
-    service_name,
-    service_rate,
-    service_description,
-    business_type,
-  } = service;
+  
+  return (
+    <div>
+      <Title service={service}></Title>
+      <ServicesBanner service={service}></ServicesBanner>
+      <Services_Detail service={service}></Services_Detail>
 
-  return <div>SS</div>;
+    </div>
+  );
 };
 
 export default ServicesDetails;
