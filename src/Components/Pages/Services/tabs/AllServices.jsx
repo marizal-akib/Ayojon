@@ -50,7 +50,10 @@ const AllServices = () => {
           <h2 className="p-4 text-xl font-semibold">{count} Services</h2>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-4">
             {services.map((service) => (
-              <div key={service._id} className="card  bg-base-100 shadow-xl">
+              <div
+                key={service._id}
+                className="card  bg-base-100 shadow-xl hover:scale-105 transition-transform duration-700"
+              >
                 <div className="card-body">
                   <h2 className="card-title">
                     {service.service_name}
@@ -60,7 +63,7 @@ const AllServices = () => {
                           <img src={service.logo_link} alt="Business Logo" />
                         </div>
                       </div>
-                      <div className="badge border-none font-bold text-orange-900 text-xs">
+                      <div className="badge border-none font-bold text-orange-900 text-xs hover:text-orange-600 transition-colors duration-300">
                         {service.business_name}
                       </div>
                     </Link>
@@ -82,7 +85,11 @@ const AllServices = () => {
               </div>
             ))}
           </div>
-          <div className="text-center pb-4 mt-5">
+          <div
+            className={`text-center pb-4 mt-5 ${
+              numberOfPages <= 1 ? "hidden" : ""
+            }`}
+          >
             <button
               className="btn  bg-slate-400 rounded-r-none"
               onClick={handlePrev}

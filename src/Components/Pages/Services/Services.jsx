@@ -10,6 +10,7 @@ import MakeupAndFashion from "./tabs/MakeupAndFashion";
 import Transportation from "./tabs/Transportation";
 import BarAndDrinks from "./tabs/BarAndDrinks";
 import DissertsAndSnacks from "./tabs/DessertsAndSnacks";
+import SecurityService from "./tabs/SecurityService";
 
 const Services = () => {
   return (
@@ -39,10 +40,10 @@ const Services = () => {
           <TabPanel><PhotoAndVideography></PhotoAndVideography></TabPanel>
           <TabPanel><MusicAndVisuals></MusicAndVisuals></TabPanel>
           <TabPanel><DecorationAndCateringEquipment></DecorationAndCateringEquipment></TabPanel>
+          <TabPanel><SecurityService></SecurityService></TabPanel>
           <TabPanel><Venues></Venues></TabPanel>
           <TabPanel><MakeupAndFashion></MakeupAndFashion></TabPanel>
           <TabPanel><Transportation></Transportation></TabPanel>
-          <TabPanel><BarAndDrinks></BarAndDrinks></TabPanel>
           <TabPanel><BarAndDrinks></BarAndDrinks></TabPanel>
           <TabPanel><DissertsAndSnacks></DissertsAndSnacks></TabPanel>
         </Tabs>
