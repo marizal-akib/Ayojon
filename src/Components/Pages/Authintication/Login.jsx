@@ -20,7 +20,10 @@ const Login = () => {
         console.log(res?.user);
         const userInfo = {
         email: res.user?.email,
-        name: res.user?.displayName}
+        name: res.user?.displayName,
+        role: "user",
+
+      }
         axiosPublic.post('/users', userInfo)
         .then(res => console.log(res.data));
         Swal.fire({
