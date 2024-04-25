@@ -7,6 +7,9 @@ import SingUp from "../Components/Pages/Authintication/SingUp";
 import Business from "../Components/Pages/Business/Business";
 import ServicesDetails from "../Components/Pages/Services/ServicesDetails/ServicesDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import Dashboard from "../Layout/Dashboard";
+import Applications from "../Components/Pages/Dashboard/AdminDash/Applications";
+import ApplyBusiness from "../Components/Pages/Dashboard/UserDash/ApplyBusiness";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +45,30 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) => fetch("http://localhost:5000/services"),
+      },
+    ],
+  },
+
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        path: "application",
+        element: <Applications></Applications>,
+      },
+
+      // Business
+
+      // user
+
+      {
+        path: "apply",
+        element: <ApplyBusiness></ApplyBusiness>,
       },
     ],
   },

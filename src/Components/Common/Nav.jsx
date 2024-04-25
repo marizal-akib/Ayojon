@@ -4,11 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Nav = () => {
   const { user , logOut} = useContext(AuthContext);
-  const handleLogout = () => {
-    logOut()
-      .then(() => {})
-      .catch((error) => console.error(error));
-  };
+
   const nav = (
     <>
       <li>
@@ -18,11 +14,7 @@ const Nav = () => {
       <li>
         <Link to={"/services"}>Services</Link>
       </li>
-      {
-        user && <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      }
+    
     </>
   );
   return (
@@ -65,12 +57,13 @@ const Nav = () => {
       {user ? (
             <>
               <span>{user?.displayName}</span>
-              <button
-                onClick={handleLogout}
+              <Link
+             to="/dashboard"
+             
                 className="btn btn-outline mx-3 ml-3 border-b-4 border-orange-400 bg-slate-100"
               >
-                Log Out
-              </button>
+               Dashboard
+              </Link>
             </>
           ) : (
             <>

@@ -4,7 +4,6 @@ import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const useUser= () => {
-    // const token = localStorage.getItem('access-token')
     const {user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const {data : isUser, isPending: isUserLoading} = useQuery({
@@ -12,9 +11,9 @@ const useUser= () => {
         enabled: !loading,
         queryFn: async() => {
             console.log('asking or checking is User', user.displayName);
-            const res = await axiosSecure.get(`/users/User/${user.email}`);
+            const res = await axiosSecure.get(`/users/user/${user.email}`);
             console.log(res.data);
-            return res.data?.User;
+            return res.data?.user;
         }
     })
     return [isUser,isUserLoading]
