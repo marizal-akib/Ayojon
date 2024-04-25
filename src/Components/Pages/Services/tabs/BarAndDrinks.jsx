@@ -107,7 +107,7 @@ const BarAndDrinks = () => {
                     : "bg-transparent"
                 } `}
               >
-                {page}
+                {page + 1}
               </button>
             ))}
             <button
